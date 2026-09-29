@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VeriText — Word-Level Plagiarism Checker</title>
+  <meta name="description" content="Professional DSA-based word-level plagiarism checker.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <nav class="nav">
+    <a class="brand" href="#home"><span class="logo">V</span><span>VeriText</span></a>
+    <div class="navlinks">
+      <a href="#checker">Checker</a><a href="#algorithm">Algorithm</a><a href="#history">History</a>
+      <button id="themeBtn" class="iconbtn" aria-label="Toggle theme">☾</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="eyebrow">DSA • WORD-LEVEL ANALYSIS</div>
+      <h1>Find copied text.<br><span>Understand the match.</span></h1>
+      <p>Compare two documents using hashing, sets, sliding windows and string matching — with every match clearly explained.</p>
+      <div class="hero-actions"><a class="btn primary" href="#checker">Start checking →</a><a class="btn ghost" href="#algorithm">How it works</a></div>
+      <div class="stats">
+        <div><b>O(n)</b><small>word indexing</small></div><div><b>Fast</b><small>hash lookup</small></div><div><b>100%</b><small>local processing</small></div>
+      </div>
+    </section>
+
+    <section id="checker" class="section">
+      <div class="sectionhead"><div><div class="eyebrow">ANALYSIS WORKSPACE</div><h2>Check your text</h2></div><span id="status" class="pill">Ready</span></div>
+      <div class="editorgrid">
+        <article class="panel">
+          <div class="paneltop"><span>Reference text</span><span id="refCount">0 words</span></div>
+          <textarea id="reference" placeholder="Paste the original/reference text here..."></textarea>
+        </article>
+        <article class="panel">
+          <div class="paneltop"><span>Submitted text</span><span id="subCount">0 words</span></div>
+          <textarea id="submitted" placeholder="Paste the text you want to check..."></textarea>
+        </article>
+      </div>
+      <div class="toolbar">
+        <label class="filebtn">Upload .txt <input id="fileInput" type="file" accept=".txt"></label>
+        <button class="btn ghost" id="sampleBtn">Use sample</button>
+        <button class="btn primary" id="checkBtn">Analyze plagiarism</button>
+      </div>
+
+      <div id="results" class="results hidden">
+        <div class="resultcards">
+          <div class="metric"><span>Plagiarism</span><strong id="plag">0%</strong><small>matched submitted words</small></div>
+          <div class="metric"><span>Originality</span><strong id="orig">100%</strong><small>unmatched submitted words</small></div>
+          <div class="metric"><span>Matching words</span><strong id="matches">0</strong><small>unique word matches</small></div>
+          <div class="metric"><span>Matching phrases</span><strong id="phrases">0</strong><small>2+ word sequences</small></div>
+        </div>
+        <div class="panel">
+          <div class="paneltop"><span>Highlighted comparison</span><button class="mini" id="saveBtn">Save report</button></div>
+          <div class="compare"><div><h4>Reference</h4><div id="refOut" class="output"></div></div><div><h4>Submitted</h4><div id="subOut" class="output"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="algorithm" class="section">
+      <div class="sectionhead"><div><div class="eyebrow">DATA STRUCTURES & ALGORITHMS</div><h2>How the detector works</h2></div></div>
+      <div class="flow">
+        <div><b>01</b><strong>Normalize</strong><p>Lowercase and tokenize both texts.</p></div>
+        <div><b>02</b><strong>HashSet</strong><p>Index unique reference words for fast lookup.</p></div>
+        <div><b>03</b><strong>Sliding Window</strong><p>Scan consecutive words for copied phrases.</p></div>
+        <div><b>04</b><strong>Similarity</strong><p>Calculate matching-word ratio and report.</p></div>
+      </div>
+      <div class="complexity"><span>Time complexity</span><b>O(n + m)</b><span>Space complexity</span><b>O(n + m)</b></div>
+    </section>
+
+    <section id="history" class="section">
+      <div class="sectionhead"><div><div class="eyebrow">LOCAL HISTORY</div><h2>Previous reports</h2></div><button id="clearHistory" class="mini">Clear</button></div>
+      <div id="historyList" class="history"></div>
+    </section>
+  </main>
+  <footer><span>VeriText © 2026</span><span>DSA Project • Word-Level Plagiarism Detection</span></footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
